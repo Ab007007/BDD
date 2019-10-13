@@ -9,12 +9,11 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/java/feature/crearecustomer.feature",
+		features = "src/test/java/feature/multiLogin.feature",
 		glue= {"stepdefinition"},
 		dryRun = false,
 		format = {"pretty","html:test-output","json:json_output/cucumber.json","junit:junit_output/cucumber.xml"},
-		monochrome = true,
-		tags = {"@sanity"}
+		monochrome = true
 		)
 public class TestRun {
 

@@ -20,16 +20,23 @@
 Feature: Title of your feature
   I want to use this template for my feature file
 
-  Scenario Outline: Successful login with valid credentials
-   Given User is on a Login Page
-   And Title is matched
-   When I enter a valid "<username>" and "<password>"
-   Then I can see the Home page
-   Then I logout from the applicaiton
-   
-   Examples:
-   	| username | password |
-   	|	admin		 | manager 	|
-   	|	admin		 | manager 	|
-   	|	admin		 | manager 	|
-   	
+  #Scenario Outline: Successful login with valid credentials
+  #Given User is on a Login Page
+  #And Title is matched
+  #When I enter a valid "<username>" and "<password>"
+  #Then I can see the Home page
+  #Then I logout from the applicaiton
+  #
+  #Examples:
+  #	| username | password |
+  #	|	admin		 | manager 	|
+  #	|	admin		 | manager 	|
+  #	|	admin		 | manager 	|
+  Scenario: Login with DataTable login with valid credentials
+    Given User is on a Login Page
+    And Title is matched
+    When I enter a valid Credentials
+      | Username | Password |
+      | admin    | manager  |
+      | admin    | manager  |
+    Then I can see the Home page and logout

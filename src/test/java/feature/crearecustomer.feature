@@ -46,9 +46,9 @@ Feature: Creating customer
 
     Examples: 
       | CustomerName | CustomerDescription |  
-      | BDDCustomer11 | BDDCust-desc1       |  
-      | BDDCustomer22 | BDDCust-desc2       |  
-      | BDDCustomer3 | BDDCust-desc3       |  
-      | BDDCustomer4 | BDDCust-desc4       |  
-      | BDDCustomer5 | BDDCust-desc5       |  
-      | BDDCustomer6 | BDDCust-desc6       |  
+      | BDDCustomer211 | BDDCust-desc1       |  
+      | BDDCustomer222 | BDDCust-desc2       |  
+      | BDDCustomer23 | BDDCust-desc3       |  
+      | BDDCustomer24 | BDDCust-desc4       |  
+      | BDDCustomer25 | BDDCust-desc5       |  
+      | BDDCustomer26 | BDDCust-desc6       |  

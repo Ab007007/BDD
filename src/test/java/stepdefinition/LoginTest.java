@@ -21,8 +21,7 @@ public class LoginTest {
 	static WebDriver driver = null;
 
 	@Before
-	public void setup()
-	{
+	public void setup() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -48,7 +47,7 @@ public class LoginTest {
 
 	@Given("^User is on a Login Page$")
 	public void user_is_on_a_Login_Page() throws Throwable {
-		
+
 		driver.get("http://localhost/login.do");
 	}
 
@@ -125,5 +124,49 @@ public class LoginTest {
 //		driver.findElement(By.id("customerLightBox_descriptionField")).sendKeys(pwd);
 //			
 //	}
+
+//	@When("^I enter a valid Credentials$")
+//	public void i_enter_a_valid_Credentials(DataTable userCredentials) throws Throwable {
+//		// Write code here that turns the phrase above into concrete actions
+//		// For automatic transformation, change DataTable to one of
+//		// List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+//		// E,K,V must be a scalar (String, Integer, Date, enum etc)
+//
+//		List<List<String>> data = userCredentials.raw();
+//		String un = data.get(0).get(0);
+//		String pwd = data.get(0).get(1);
+//		driver.findElement(By.id("username")).sendKeys(un);
+//		driver.findElement(By.name("pwd")).sendKeys(p);
+//		driver.findElement(By.id("loginButton")).click();
+//		Thread.sleep(2000);
+//	}
+	
+	
+	@When("^I enter a valid Credentials$")
+	public void i_enter_a_valid_Credentials(DataTable userCredentials) throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		// For automatic transformation, change DataTable to one of
+		// List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+		// E,K,V must be a scalar (String, Integer, Date, enum etc)
+
+		 List<Map<String, String>> data = userCredentials.asMaps(String.class, String.class);
+		 for (Map<String, String> map : data) {
+			 	String un = map.get("Username");
+				String pwd = map.get("Password");
+				driver.findElement(By.id("username")).sendKeys(un);
+				driver.findElement(By.name("pwd")).sendKeys(pwd);
+				driver.findElement(By.id("loginButton")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.linkText("Logout")).click();
+		}
+		
+		
+	}
+	@Then("^I can see the Home page and logout$")
+	public void i_can_see_the_Home_page_and_logout() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		driver.findElement(By.linkText("Logout")).click();
+		//driver.close();
+	}
 
 }
